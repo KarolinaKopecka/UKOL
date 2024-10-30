@@ -1,30 +1,33 @@
-const jmeno = prompt ("Vlož jméno.")
-const prijmeni = prompt ("Vlož příjmení.")
+const jmeno = prompt ("Vlož jméno.").trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+const prijmeni = prompt ("Vlož příjmení.").trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 
-const Znakyjmeno = jmeno.trim()
-const ZnakyPrijmeni = prijmeni.trim ()
+    document.body.innerHTML = `<p>Email je ${prijmeni.length >= 5 
+        ? prijmeni.slice(0, 5) 
+        : prijmeni.slice()}.${jmeno.length >= 3 
+        ? jmeno.slice(0, 3) 
+        : jmeno.slice()}@fit.cvut.cz.</p>`;
 
-const ZnakyMalaJmeno = Znakyjmeno.toLowerCase()
-const ZnakyMalaPrijmeni = ZnakyPrijmeni.toLowerCase()
+/*const znakyJmeno = jmeno.trim()
+const znakyPrijmeni = prijmeni.trim ()
 
-const DiaZnakyMalaJmeno = ZnakyMalaJmeno.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-const DiaZnakyMalaPrijmeni = ZnakyMalaPrijmeni.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+const znakyMalaJmeno = znakyJmeno.toLowerCase()
+const znakyMalaPrijmeni = znakyPrijmeni.toLowerCase()
 
+const diaZnakyMalaJmeno = znakyMalaJmeno.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+const diaZnakyMalaPrijmeni = znakyMalaPrijmeni.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 
-if ((Znakyjmeno.length>=5) && (ZnakyPrijmeni.length>=5 )) {
-    document.body.innerHTML =`<p> Email je ${DiaZnakyMalaPrijmeni.slice(0,4)}.${DiaZnakyMalaJmeno.slice(0,4)}@fit.cvut.cz.</p>`
+if ((jmeno.length>=4) && (prijmeni.length>=6 )) {
+    document.body.innerHTML =`<p> Email je ${prijmeni.slice(0,5)}.${jmeno.slice(0,3)}@fit.cvut.cz.</p>`
     
-} else if ((Znakyjmeno.length>=5) && (ZnakyPrijmeni.length<5 )) {
-     document.body.innerHTML =`<p> Email je ${DiaZnakyMalaPrijmeni}.${DiaZnakyMalaJmeno.slice(0,4)}@fit.cvut.cz.</p>`
+} else if ((jmeno.length>=4) && (prijmeni.length<6 )) {
+     document.body.innerHTML =`<p> Email je ${prijmeni}.${jmeno.slice(0,3)}@fit.cvut.cz.</p>`
 
-} else if ((Znakyjmeno.length<5) && (ZnakyPrijmeni.length>=5 )) {
-    document.body.innerHTML =`<p> Email je ${DiaZnakyMalaPrijmeni.slice(0,4)}.${DiaZnakyMalaJmeno}@fit.cvut.cz.</p>`
+} else if ((jmeno.length<4) && (prijmeni.length>=6 )) {
+    document.body.innerHTML =`<p> Email je ${prijmeni.slice(0,5)}.${jmeno}@fit.cvut.cz.</p>`
 
 }else {
-     document.body.innerHTML =`<p> Email je ${DiaZnakyMalaPrijmeni}.${DiaZnakyMalaJmeno}@fit.cvut.cz.</p>`
-}
-
-
+     document.body.innerHTML =`<p> Email je ${prijmeni}.${jmeno}@fit.cvut.cz.</p>`
+} */
 
 /*Pokud se přihlásíte jako student například na Fakultu Informačních 
 Technologí ČVUT, bude vám informačním systémem automaticky přidělen e-mail, 
